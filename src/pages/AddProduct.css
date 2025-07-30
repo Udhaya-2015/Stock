@@ -1,0 +1,23 @@
+.add-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.add-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-container input {
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.add-container button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

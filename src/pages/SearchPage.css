@@ -1,0 +1,33 @@
+.search-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.search-container input {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+}
+
+.suggestions-list {
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestions-list li {
+  padding: 10px;
+  cursor: pointer;
+  background: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+
+.results {
+  margin-top: 20px;
+}
