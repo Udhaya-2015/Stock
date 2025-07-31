@@ -1,23 +1,25 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar";
+import Signup from "./pages/signup";
+import Login from "./pages/login";
 import Home from "./pages/Home";
-import SearchPage from "./pages/SearchPage";
 import AddProduct from "./pages/AddProduct";
+import SearchPage from "./pages/SearchPage";
 import DecreaseProduct from "./pages/DecreaseProduct";
-import './index.css';
 
 function App() {
+  const [userRole, setUserRole] = useState(null);
+
   return (
     <Router>
-      <Navbar />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/add" element={<AddProduct />} />
-          <Route path="/decrease" element={<DecreaseProduct />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login setUserRole={setUserRole} />} />
+        <Route path="/add" element={userRole === "owner" ? <AddProduct /> : <p>Not authorized</p>} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/decrease" element={<DecreaseProduct />} />
+      </Routes>
     </Router>
   );
 }
