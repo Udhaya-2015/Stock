@@ -40,6 +40,7 @@ export default function AddProduct() {
   return (
     <div className="add-container">
       <h2>Add Product</h2>
+      <div className="form-container">
       <form onSubmit={handleSubmit}>
         <input placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
         <input placeholder="Vehicle" value={form.vehicle} onChange={(e) => setForm({ ...form, vehicle: e.target.value })} />
@@ -49,6 +50,7 @@ export default function AddProduct() {
         <input placeholder="Side Suitable (optional)" value={form.sidesuitable} onChange={(e) => setForm({ ...form, sidesuitable: e.target.value })} />
         <button type="submit">Add</button>
       </form>
+      </div>
     </div>
   );
 }

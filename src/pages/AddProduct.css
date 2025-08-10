@@ -1,23 +1,54 @@
 .add-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-.add-container form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1); /* translucent white */
+  border-radius: 12px;
+  backdrop-filter: blur(8px); /* glass effect */
+  max-width: 500px;
+  margin: auto;
 }
 
-.add-container input {
-  padding: 10px;
-  margin: 5px 0;
-}
-
-.add-container button {
-  padding: 10px;
-  background-color: #007bff;
+h2 {
   color: white;
+}
+
+.form-container {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input {
+  padding: 10px;
   border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 16px;
+}
+
+/* Change placeholder color */
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6); 
+  font-style: italic;
+}
+
+button {
+  padding: 10px;
+  background: #4cafef;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
+}
+
+button:hover {
+  background: #2b92d4;
 }

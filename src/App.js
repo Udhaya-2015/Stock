@@ -1,24 +1,40 @@
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Signup from "./pages/signup";
-import Login from "./pages/login";
+import Navbar from "./components/navbar"; 
 import Home from "./pages/Home";
-import AddProduct from "./pages/AddProduct";
-import SearchPage from "./pages/SearchPage";
-import DecreaseProduct from "./pages/DecreaseProduct";
+import Search from "./pages/SearchPage";
+import Add from "./pages/AddProduct";
+import Decrease from "./pages/DecreaseProduct";
+import Increase from "./pages/IncreaseProduct";
+import Login from "./pages/login";
 
 function App() {
-  const [userRole, setUserRole] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [userRole, setUserRole] = useState(localStorage.getItem("role")); // store role
+
+  const handleLogout = () => {
+    setToken(null);
+    setUserRole(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+  };
 
   return (
     <Router>
+      <Navbar isLoggedIn={!!token} userRole={userRole} onLogout={handleLogout} />
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login setUserRole={setUserRole} />} />
-        <Route path="/add" element={userRole === "owner" ? <AddProduct /> : <p>Not authorized</p>} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/decrease" element={<DecreaseProduct />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/decrease" element={<Decrease />} />
+        <Route path="/increase" element={<Increase />} />
+        <Route 
+          path="/add" 
+          element={userRole === "admin" ? <Add /> : <Navigate to="/" />} 
+        />
+        
+        <Route path="/login" element={<Login setToken={setToken} setUserRole={setUserRole} />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );

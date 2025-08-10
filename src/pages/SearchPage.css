@@ -2,6 +2,13 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 1rem;
+  background: rgba(255, 255, 255, 0.2); /* White with 20% opacity */
+  backdrop-filter: blur(10px); /* Makes it glassy/frosted */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border-radius: 10px;
+  padding: 20px;
+  margin: auto;
+  color: white;
 }
 
 .search-container input {
