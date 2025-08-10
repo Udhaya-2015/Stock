@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "./components/navbar"; 
 import Home from "./pages/Home";
@@ -7,10 +7,14 @@ import Add from "./pages/AddProduct";
 import Decrease from "./pages/DecreaseProduct";
 import Increase from "./pages/IncreaseProduct";
 import Login from "./pages/login";
+import "./Apps.css"; // make sure background classes are here
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
+
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [userRole, setUserRole] = useState(localStorage.getItem("role")); // store role
+  const [userRole, setUserRole] = useState(localStorage.getItem("role"));
 
   const handleLogout = () => {
     setToken(null);
@@ -20,8 +24,8 @@ function App() {
   };
 
   return (
-    <Router>
-      <Navbar isLoggedIn={!!token} userRole={userRole} onLogout={handleLogout} />
+    <div className={isLoginPage ? "login-bg" : "app-bg"}>
+      {!isLoginPage && <Navbar isLoggedIn={!!token} userRole={userRole} onLogout={handleLogout} />}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -32,12 +36,17 @@ function App() {
           path="/add" 
           element={userRole === "admin" ? <Add /> : <Navigate to="/" />} 
         />
-        
         <Route path="/login" element={<Login setToken={setToken} setUserRole={setUserRole} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </Router>
+    </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
+}

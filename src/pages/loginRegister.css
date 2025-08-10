@@ -4,15 +4,15 @@
   color: black;
 }
 
-body {
-  margin: 10px;
-  padding: 0;
-  height: 100vh;
-  background: url('ba.jpg') no-repeat center center fixed;
-  background-size: cover;
+.login-container {
+  height: 500px;
+  max-width: 600px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-left: 480px;
+  justify-content: center;  /* Center horizontally */
+  align-items: center;      /* Center vertically */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .container {
