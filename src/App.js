@@ -7,8 +7,7 @@ import Add from "./pages/AddProduct";
 import Decrease from "./pages/DecreaseProduct";
 import Increase from "./pages/IncreaseProduct";
 import Login from "./pages/login";
-import "./Apps.css"; // make sure background classes are here
-
+import "./Apps.css"; 
 function AppContent() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
